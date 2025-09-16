@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import checkUrls from '../utils/checkUrls';
+import checkUrls from '../utils/checkUrls.js';
 import RedirectTimer from './RedirectTimer';
 
 export default function SectionList() {
@@ -42,7 +42,7 @@ export default function SectionList() {
   return (
     <main className="max-w-4xl mx-auto p-8">
       <h2 className="text-2xl font-semibold mb-4">
-        {category.toUpperCase()} – Accessible Sites
+        {category.toUpperCase()} - Accessible Sites
       </h2>
 
       <RedirectTimer url={workingUrls[0]} seconds={5} />

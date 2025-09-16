@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import checkUrls from '../utils/checkUrls';
+import checkUrls from '../utils/checkUrls_temp';
 import RedirectTimer from './RedirectTimer';
 
 export default function SectionList() {

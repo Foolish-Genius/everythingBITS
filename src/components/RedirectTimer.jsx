@@ -4,7 +4,7 @@ export default function RedirectTimer({ url, seconds = 10 }) {
   const [count, setCount] = useState(seconds);
 
   useEffect(() => {
-    if (count === 0) {
+    if (count <= 0) {
       window.location.href = url;
       return;
     }
@@ -13,8 +13,8 @@ export default function RedirectTimer({ url, seconds = 10 }) {
   }, [count, url]);
 
   return (
-    <div className="redirect-timer" aria-live="polite">
-      Redirecting to top URL in {count} seconds...
+    <div className="text-center text-red-500 font-semibold mt-4" aria-live="polite">
+      Redirecting to top URL in {count} second{count !== 1 ? 's' : ''}...
     </div>
   );
 }

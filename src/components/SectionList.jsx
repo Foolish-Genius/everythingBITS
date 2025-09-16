@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import checkUrls from '../utils/checkUrls';
+import checkUrls from '../utils/checkURLs';
+import RedirectTimer from './RedirectTimer';
 
 export default function SectionList() {
   const { category } = useParams();
@@ -12,8 +13,9 @@ export default function SectionList() {
     setLoading(true);
     import(`../data/${category}.json`)
       .then(module => {
-        setUrls(module.default);
-        return checkUrls(module.default);
+        const urlList = module.default;
+        setUrls(urlList);
+        return checkUrls(urlList);
       })
       .then(results => {
         setWorkingUrls(results);
@@ -22,21 +24,44 @@ export default function SectionList() {
       .catch(() => setLoading(false));
   }, [category]);
 
-  if (loading) return <div className="loader">Checking URLs...</div>;
-  if (!workingUrls.length) return <div className="container"><h2>{category.toUpperCase()}</h2><p>No accessible URLs found.</p></div>;
+  if (loading)
+    return (
+      <div className="text-center mt-10 text-lg text-gray-400">
+        Checking URLs...
+      </div>
+    );
+
+  if (!workingUrls.length)
+    return (
+      <main className="max-w-4xl mx-auto p-8">
+        <h2 className="text-2xl font-semibold mb-4">{category.toUpperCase()}</h2>
+        <p className="text-gray-400">No accessible URLs found.</p>
+      </main>
+    );
 
   return (
-    <div className="container">
-      <h2>{category.toUpperCase()} - Accessible Sites</h2>
-      <ul className="url-list">
+    <main className="max-w-4xl mx-auto p-8">
+      <h2 className="text-2xl font-semibold mb-4">
+        {category.toUpperCase()} – Accessible Sites
+      </h2>
+
+      <RedirectTimer url={workingUrls[0]} seconds={5} />
+
+      <ul className="divide-y divide-gray-700 mt-6">
         {workingUrls.map(url => (
-          <li key={url}>
-            <a href={url} target="_blank" rel="noopener noreferrer" aria-label={`Open ${url}`}>
+          <li key={url} className="py-2">
+            <a
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-400 hover:underline break-words"
+              aria-label={`Open ${url}`}
+            >
               {url}
             </a>
           </li>
         ))}
       </ul>
-    </div>
+    </main>
   );
 }

@@ -1,12 +1,106 @@
-# React + Vite
+# everythingBITS
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A multi-category URL checker and redirector web app built with React and TailwindCSS.  
+It verifies the accessibility of curated lists of URLs for categories such as anime, manga, movies, games, and more, on the user’s local network before redirecting or displaying working links.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- Displays category sections on the homepage with clean UI.
+- Checks URL accessibility client-side (in user’s browser) to respect local network restrictions.
+- Lists only reachable URLs for each category.
+- Auto-redirects to the first working URL with visible countdown timer.
+- Modular JSON data files for categories (anime.json, manga.json, movies.json, games.json).
+- Built with React, React Router, and styled using TailwindCSS.
+- Easily extendable with new categories and URLs.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## Project Structure
+```
+/public
+/src
+/components
+Home.jsx
+SectionList.jsx
+RedirectTimer.jsx
+/data
+anime.json
+manga.json
+movies.json
+games.json
+/utils
+checkUrls.js
+App.jsx
+main.jsx
+tailwind.config.js
+package.json
+README.md
+```
+---
+
+## Setup
+
+1. Clone the repository:
+```
+git clone https://github.com/Foolish-Genius/everythingBITS.git
+
+cd everythingBITS
+```
+
+2. Install dependencies:
+```
+npm install
+```
+
+
+3. Run the development server:
+```
+npm run dev
+```
+
+4. Open `http://localhost:5173` in your browser.
+
+---
+
+## Data
+
+- Add or update URLs in JSON files under `/src/data`.
+- Format: Array of strings, each string a full URL including protocol (e.g., `"https://example.com"`).
+
+---
+
+## URL Checking Logic
+
+- URLs are checked client-side using fetch to test availability.
+- Unreachable URLs are filtered out and not displayed.
+- The first accessible URL triggers a redirect after a 10-second countdown.
+
+---
+
+## Deployment
+
+- Suitable for deployment on platforms like Vercel.
+- Client-side URL checks ensure results reflect the end user’s network accessibility.
+
+---
+
+## Future Improvements
+
+- Add backend crawler to update JSON files automatically.
+- Add authentication or user preferences.
+- Support pagination or search within categories.
+- Improve UI responsiveness and accessibility.
+
+---
+
+## License
+
+MIT License.
+
+---
+
+## Author
+
+Foolish-Genius

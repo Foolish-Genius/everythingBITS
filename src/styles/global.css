@@ -1,0 +1,85 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #121212;
+  color: #e0e0e0;
+  margin: 0;
+  padding: 2rem;
+}
+
+a {
+  color: #1e90ff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+h1, h2 {
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1.5rem;
+}
+
+.category-card {
+  background: #1f1f1f;
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.7);
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.category-card:hover {
+  background: #272727;
+  transform: translateY(-4px);
+}
+
+.category-card h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: #61dafb;
+}
+
+.url-list {
+  margin-top: 1rem;
+}
+
+.url-list li {
+  padding: 0.4rem 0;
+  border-bottom: 1px solid #333;
+}
+
+.url-list li a {
+  display: inline-block;
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+
+.loader {
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 2rem;
+}
+
+.redirect-timer {
+  font-weight: 600;
+  margin-top: 1rem;
+  color: #ff4500;
+}
